@@ -25,7 +25,7 @@ public class CreateTable {
         try {
             jdbcTemplate.execute("DROP TABLE IF EXISTS cats");
 
-            jdbcTemplate.execute("CREATE TABLE public.cats\n" +
+            jdbcTemplate.execute("CREATE TABLE public.room\n" +
                     "(\n" +
                     " id INTEGER NOT NULL, \n" +
                     " name character VARYING(255), \n " +
