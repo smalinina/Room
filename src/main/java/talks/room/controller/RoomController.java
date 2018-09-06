@@ -1,17 +1,47 @@
 package talks.room.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import talks.room.entity.Room;
+import talks.room.service.RoomService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/room")
 public class RoomController {
 
-    @RequestMapping(value = "/add",  method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-    public Room addRoom(@RequestBody Room room){
+    @Autowired
+    private RoomService roomService;
 
+    @RequestMapping(value = "/add",  method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public Room addRoom(@RequestBody Room room){
+        return roomService.addRoom(room);
+    }
+
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public Room getRoomById(@PathVariable(value = "id") String id) {
+        return roomService.getRoomById(Long.parseLong(id));
+    }
+
+    @RequestMapping(value = "/get/all", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public List<Room> getAllRoom() {
+        return roomService.getAllRoom();
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public Room updateRoom(@RequestBody Room room) {
+        return roomService.updateRoom(room);
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public Room deleteRoomById(@PathVariable(value = "id") String id) {
+        return roomService.deleteRoomById(Long.parseLong(id));
     }
 }

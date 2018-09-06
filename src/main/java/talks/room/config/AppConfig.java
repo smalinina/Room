@@ -7,6 +7,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import talks.room.dao.RoomDao;
+import talks.room.dao.impl.RoomDaoImpl;
+import talks.room.entity.Room;
 import talks.room.model.CreateTable;
 
 @Configuration
@@ -37,6 +40,11 @@ public class AppConfig {
     @Bean
     public CreateTable createTable() {
         return new CreateTable(jdbcTemplate());
+    }
+
+    @Bean
+    public RoomDao roomDao(){
+        return new RoomDaoImpl(Room.class);
     }
 
 }
