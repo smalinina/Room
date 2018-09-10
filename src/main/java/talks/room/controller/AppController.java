@@ -19,7 +19,7 @@ public class AppController {
 
     @RequestMapping("/")
     public String getHelloPage(Model model) {
-        return "hello";
+        return "main";
     }
 
     @RequestMapping("/create")
