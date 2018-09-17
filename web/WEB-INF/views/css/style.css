@@ -1,0 +1,61 @@
+body {
+    background: #f3f2f3;
+    color: #000000;
+    font-family: Trebuchet MS, Arial, Times New Roman;
+    font-size: 12px;
+}
+
+#container {
+    background:#99CC99;
+    margin: 30px auto;
+    width: 80%;
+    height: 600px;
+}
+
+#header {
+    background: #66CCCC;
+    height: 100px;
+    width: 100%;
+}
+
+#menu {
+    background: #99CC99;
+    float: left;
+    width: 20%;
+    height: 400px;
+}
+
+#content {
+    background: #d2d0d2;
+    float: right;
+    width: 80%;
+    height: 400px;
+}
+
+#footer {
+    background: #0066FF;
+    height: 80px;
+    width: 100%;
+}
+
+
+.div_1 {
+    width: 30%;
+    height: 150px;
+    float: left;
+    background: #0066FF;
+}
+
+.div_2 {
+    width: 100%;
+    height: 20%;
+}
+
+.table_1 {
+    border: 1px solid grey;
+    width: 600px;
+}
+/* границы ячеек первого ряда таблицы */
+th {border: 1px solid grey;}
+/* границы ячеек тела таблицы */
+td {border: 1px solid grey;}

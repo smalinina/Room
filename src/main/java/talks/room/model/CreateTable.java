@@ -20,7 +20,7 @@ public class CreateTable {
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+/*
     public String create() {
         try {
             jdbcTemplate.execute("DROP TABLE IF EXISTS cats");
@@ -39,4 +39,5 @@ public class CreateTable {
             return "something going wrong..." + e;
         }
     }
+    */
 }

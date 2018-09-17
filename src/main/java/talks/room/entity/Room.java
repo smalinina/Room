@@ -1,5 +1,7 @@
 package talks.room.entity;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -10,11 +12,10 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
     private String name;
     private int count;
     private String description;
-    @Column(name = "date_time")
-    private LocalDateTime dateTime;
 
     public long getId() {
         return id;
@@ -48,11 +49,4 @@ public class Room {
         this.description = description;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
 }

@@ -21,10 +21,10 @@ public class AppController {
     public String getHelloPage(Model model) {
         return "main";
     }
-
+/*
     @RequestMapping("/create")
     public String createTableStatus(Model model) {
         model.addAttribute("status", createTable.create());
         return "create";
-    }
+    }*/
 }

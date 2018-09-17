@@ -7,8 +7,11 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import talks.room.dao.ReservationDao;
 import talks.room.dao.RoomDao;
+import talks.room.dao.impl.ReservationDaoImpl;
 import talks.room.dao.impl.RoomDaoImpl;
+import talks.room.entity.Reservation;
 import talks.room.entity.Room;
 import talks.room.model.CreateTable;
 
@@ -47,4 +50,8 @@ public class AppConfig {
         return new RoomDaoImpl(Room.class);
     }
 
+    @Bean
+    public ReservationDao reservationDao(){
+        return new ReservationDaoImpl(Reservation.class);
+    }
 }
