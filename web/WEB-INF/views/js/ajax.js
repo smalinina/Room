@@ -1,9 +1,12 @@
 var service = "http://localhost:8080/room";
 
-var RestPost = function (name, description) {
+var RestPost = function (name, count, date, dateStart, dateEnd,description) {
     var JSONObject = {
         'name': name,
         'count': count,
+        'date': date,
+        'dateStart': dateStart,
+        'dateEnd': dateEnd,
         'description': description
     };
 
@@ -15,6 +18,24 @@ var RestPost = function (name, description) {
         dataType: 'json',
         async: false,
         success: function (result) {
+            for (var i = 0; i < result.length; i++) {
+                $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td><td>' + result[i].description + '</td></tr>');
+            }
+
+        },
+        error: function (jqXHR, testStatus, errorThrown) {
+            $('#response').html(JSON.stringify(jqXHR))
+        }
+    });
+};
+
+var RestGet = function (id) {
+    $.ajax({
+        type: 'GET',
+        url: service + '/get/' + id,
+        dataType: 'json',
+        async: false,
+        success: function (result) {
             $('#response').html(JSON.stringify(result))
         },
         error: function (jqXHR, testStatus, errorThrown) {
@@ -23,30 +44,23 @@ var RestPost = function (name, description) {
     });
 };
 
-var RestGetAll = function () {
+
+var RestGetAll;
+RestGetAll = function () {
     $.ajax({
         type: 'GET',
         url: service + '/get/all',
         dataType: 'json',
         async: false,
-        success: function(data){
-            if(data){
-                var len = data.length;
-                var txt = "";
-                if(len > 0){
-                    for(var i=0;i<len;i++){
-                        if(data[i].name && data[i].count && data[i].description){
-                            txt += "<tr><td>"+data[i].name+"</td><td>"+data[i].count+"</td><td>"+data[i].description+"</td></tr>";
-                        }
-                    }
-                    if(txt != ""){
-                        $("#table").append(txt).removeClass("hidden");
-                    }
-                }
+        success: function (result) {
+            $("#response").empty();
+            for (var i = 0; i < result.length; i++) {
+                $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td><td>' + result[i].description + '</td></tr>');
             }
+
         },
-            error: function (jqXHR, testStatus, errorThrown) {
-            $('#table').html(JSON.stringify(jqXHR))
+        error: function (jqXHR, testStatus, errorThrown) {
+            $('#response').html(JSON.stringify(jqXHR))
         }
     });
 };

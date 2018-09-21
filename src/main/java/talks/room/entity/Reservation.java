@@ -17,6 +17,9 @@ public class Reservation {
     @Column(name = "date_end")
     private LocalTime dataEnd;
 
+    @ManyToOne
+    Room room;
+
     public long getId() {
         return id;
     }
@@ -47,5 +50,12 @@ public class Reservation {
 
     public void setDataEnd(LocalTime dataEnd) {
         this.dataEnd = dataEnd;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+    public void setEvent(Room room) {
+        this.room = room;
     }
 }

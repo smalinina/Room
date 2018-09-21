@@ -13,73 +13,119 @@
 </head>
 
 <body>
-<div id="container">
-    <div id="header">
-        <h2>Сервис бронирования комнат</h2>
-    </div>
-
-    <div id="menu">
-        <h2>Меню</h2>
-    </div>
-
-    <div id="content">
-        <div class="div_1">
-            <div class="div_2">
-                <label>Комната</label>
-            </div>
-            <div class="div_2">
-                <label>Количество человек</label>
-            </div>
-            <div class="div_2">
-                <label>Дата</label>
-            </div>
-            <div class="div_2">
-                <label>Время начала</label>
-            </div>
-            <div class="div_2">
-                <label>Время окончания</label>
-            </div>
-            <div class="div_2"></div>
+<h1>Сервис бронирования переговорных комнат</h1>
+<div id = "test">
+<div id="content">
+    <div id = "menu" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Бронирование комнаты</h3>
         </div>
-        <div>
-            <div class="div_1">
-                <div class="div_2">
+        <div class="panel-body">
+            <div class="section_main">
+                <div class="section">
+                    <label>Комната</label>
+                </div>
+                <div class="section">
+                    <label>Количество человек</label>
+                </div>
+                <div class="section">
+                    <label>Дата</label>
+                </div>
+                <div class="section">
+                    <label>Время начала</label>
+                </div>
+                <div class="section">
+                    <label>Время окончания</label>
+                </div>
+                <div class="section">
+                    <label>Цель</label>
+                </div>
+            </div>
+            <div class="section_main">
+                <div class="section">
+                    <input id = "postName">
+                </div>
+                <div class="section">
+                    <input id = "postCount">
+                </div>
+                <div class="section">
+                    <input id = "postDate" type="date" min = "01-01-2018">
+                </div>
+                <div class="section">
+                    <input id = "postTimeStart" type="time">
+                </div>
+                <div class="section">
+                    <input id = "postTimeEnd" type="time">
+                </div>
+                <div class="section">
+                    <input id = "postDescription">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id = "menu1" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Поиск комнат</h3>
+        </div>
+        <div class="panel-body">
+            <div class="section_main">
+                <div class="section">
+                    <label>Комната</label>
+                </div>
+                <div class="section">
+                    <label>Количество человек</label>
+                </div>
+                <div class="section">
+                    <label>Дата</label>
+                </div>
+                <div class="section">
+                    <label>Время начала</label>
+                </div>
+                <div class="section">
+                    <label>Время окончания</label>
+                </div>
+            </div>
+            <div class="section_main">
+                <div class="section">
                     <input>
                 </div>
-                <div class="div_2">
+                <div class="section">
                     <input>
                 </div>
-                <div class="div_2">
-                    <input type="date" name="calendar"  min="2018-01-01">
+                <div class="section">
+                    <input>
                 </div>
-                <div class="div_2">
-                    <input type="time">
+                <div class="section">
+                    <input>
                 </div>
-                <div class="div_2">
-                    <input type="time">
-                </div>
-                <div class="div_2">
-                    <button>Найти</button>
+                <div class="section">
+                    <input>
                 </div>
             </div>
         </div>
-
-        <div>
-            <table id="table" class="table_1">
-                <tr>
-                    <th>Комната</th>
-                    <th>Количество человек</th>
-                    <th>Описание</th>
-                </tr>
-            </table>
-        </div>
     </div>
-
-
-
-    <div id="footer">
-        <h2>Подвал сайта</h2>
+    <div class="test2">
+        <button type="button" onclick="RestPost($('#postName').val(), $('#postCount').val(), $('#postDate').val(), $('#postTimeStart').val(), $('#postTimeEnd').val(), $('#postDescription').val())">Забронировать комнату</button>
+        <button>Поиск комнаты</button>
+        <button>Поиск забронированных комнат</button>
     </div>
+    <div id = "section_test" class="panel panel-default">
+        <div class="panel-heading"> Результаты </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Комната</th>
+                <th>Количество человек</th>
+                <th>Дата</th>
+                <th>Время начала</th>
+                <th>Время окончания</th>
+                <th>Цель</th>
+            </tr>
+            </thead>
+            <tbody id="response"></tbody>
+        </table>
+    </div>
+</div>
 </div>
 </body>
 </html>
