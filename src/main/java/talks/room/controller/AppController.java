@@ -9,7 +9,6 @@ import talks.room.model.CreateTable;
 @Controller
 public class AppController {
 
-
     private final CreateTable createTable;
 
     @Autowired

@@ -1,8 +1,7 @@
 package talks.room.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
@@ -11,11 +10,18 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private LocalDate date;
+    @Temporal(TemporalType.DATE)
+    private Date date;
     @Column(name = "date_start")
-    private LocalTime dataStart;
+    @Temporal(TemporalType.TIME)
+    private Date dataStart;
     @Column(name = "date_end")
-    private LocalTime dataEnd;
+    //@Column(name = "end_date", columnDefinition = "DATE")
+    @Temporal(TemporalType.TIME)
+    private Date dataEnd;
+    @Column(name = "count_room")
+    private int countRoom;
+    private String author;
 
     @ManyToOne
     Room room;
@@ -28,27 +34,27 @@ public class Reservation {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public LocalTime getDataStart() {
+    public Date getDataStart() {
         return dataStart;
     }
 
-    public void setDataStart(LocalTime dataStart) {
+    public void setDataStart(Date dataStart) {
         this.dataStart = dataStart;
     }
 
-    public LocalTime getDataEnd() {
+    public Date getDataEnd() {
         return dataEnd;
     }
 
-    public void setDataEnd(LocalTime dataEnd) {
+    public void setDataEnd(Date dataEnd) {
         this.dataEnd = dataEnd;
     }
 
@@ -57,5 +63,25 @@ public class Reservation {
     }
     public void setEvent(Room room) {
         this.room = room;
+    }
+
+    public int getCountRoom() {
+        return countRoom;
+    }
+
+    public void setCountRoom(int countRoom) {
+        this.countRoom = countRoom;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

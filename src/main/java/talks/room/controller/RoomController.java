@@ -3,6 +3,7 @@ package talks.room.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import talks.room.entity.Reservation;
 import talks.room.entity.Room;
 import talks.room.service.RoomService;
 
@@ -43,5 +44,11 @@ public class RoomController {
     @ResponseBody
     public Room deleteRoomById(@PathVariable(value = "id") String id) {
         return roomService.deleteRoomById(Long.parseLong(id));
+    }
+
+    @RequestMapping(value = "/get/{name}", method = RequestMethod.GET)
+    @ResponseBody
+    public Room getRoomByName(@PathVariable(value = "name") String name){
+        return roomService.getRoomByName(name);
     }
 }

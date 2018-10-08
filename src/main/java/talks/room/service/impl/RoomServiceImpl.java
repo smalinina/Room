@@ -39,4 +39,9 @@ public class RoomServiceImpl implements RoomService {
     public Room deleteRoomById(long id) {
         return roomDao.delete(getRoomById(id));
     }
+
+    @Override
+    public Room getRoomByName(String room) {
+        return roomDao.getByName(room);
+    }
 }

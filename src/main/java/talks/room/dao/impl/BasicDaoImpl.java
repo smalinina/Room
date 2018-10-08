@@ -56,6 +56,11 @@ public class BasicDaoImpl<T> implements BasicDao<T> {
         return getSessionFactory().get(entityClass, id);
     }
 
+    @Override
+    public T getByName(String name) {
+        return getSessionFactory().get(entityClass, name);
+    }
+
     private Session getSessionFactory() {
         return sessionFactory.getCurrentSession();
     }

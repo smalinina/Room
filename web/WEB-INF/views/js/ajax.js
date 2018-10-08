@@ -19,7 +19,7 @@ var RestPost = function (name, count, date, dateStart, dateEnd,description) {
         async: false,
         success: function (result) {
             for (var i = 0; i < result.length; i++) {
-                $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td><td>' + result[i].description + '</td></tr>');
+                $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td></tr>');
             }
 
         },
@@ -45,17 +45,39 @@ var RestGet = function (id) {
 };
 
 
+$("select").click(function(){
+//$('#category2').click( function () {
+//var RestGetByName = function(){
+    $.ajax({
+        type: 'GET',
+        url: service + '/get/all',
+        dataType: 'json',
+        async: true,
+        success: function (result) {
+            $('#category1').empty();
+            for ( var i = 0; i < result.length; i++ ) {
+                // Каждое полученное значение вставим в список категорий транспорта
+                $('#category1').append('<option value="' + result[i].name + '">' + result[i].name + '</option>' );
+            }
+        },
+        error: function (jqXHR, testStatus, errorThrown) {
+            $('#category1').html(JSON.stringify(jqXHR))
+        }
+})
+    });
+
+
 var RestGetAll;
 RestGetAll = function () {
     $.ajax({
         type: 'GET',
-        url: service + '/get/all',
+        url: 'http://localhost:8080/reservation/get/all',
         dataType: 'json',
         async: false,
         success: function (result) {
             $("#response").empty();
             for (var i = 0; i < result.length; i++) {
-                $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td><td>' + result[i].description + '</td></tr>');
+                $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td></tr>');
             }
 
         },
@@ -64,3 +86,24 @@ RestGetAll = function () {
         }
     });
 };
+
+
+
+$(function() {
+    var tab = $('#tabs .tabs-items > div');
+    tab.hide().filter(':first').show();
+
+    // Клики по вкладкам.
+    $('#tabs .tabs-nav a').click(function(){
+        tab.hide();
+        tab.filter(this.hash).show();
+        $('#tabs .tabs-nav a').removeClass('active');
+        $(this).addClass('active');
+        return false;
+    }).filter(':first').click();
+
+    // Клики по якорным ссылкам.
+    $('.tabs-target').click(function(){
+        $('#tabs .tabs-nav a[href=' + $(this).data('id')+ ']').click();
+    });
+});

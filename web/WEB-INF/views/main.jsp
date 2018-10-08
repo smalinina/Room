@@ -14,14 +14,16 @@
 
 <body>
 <h1>Сервис бронирования переговорных комнат</h1>
-<div id = "test">
-<div id="content">
-    <div id = "menu" class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Бронирование комнаты</h3>
-        </div>
-        <div class="panel-body">
-            <div class="section_main">
+
+<div id="tabs">
+    <ul class="tabs-nav">
+        <li><a href="#tab-1">Поиск свободных комнат</a></li>
+        <li><a href="#tab-2">Поиск забронированных комнат</a></li>
+        <li><a href="#tab-3">Забронировать комнату</a></li>
+    </ul>
+    <div class="tabs-items">
+        <div class="tabs-item" id="tab-1">
+            <div class="menu">
                 <div class="section">
                     <label>Комната</label>
                 </div>
@@ -38,12 +40,13 @@
                     <label>Время окончания</label>
                 </div>
                 <div class="section">
-                    <label>Цель</label>
                 </div>
             </div>
-            <div class="section_main">
+            <div class="menu">
                 <div class="section">
-                    <input id = "postName">
+                    <select id="category1">
+                        <option value="">Выберите из списка</option>
+                    </select>
                 </div>
                 <div class="section">
                     <input id = "postCount">
@@ -58,17 +61,27 @@
                     <input id = "postTimeEnd" type="time">
                 </div>
                 <div class="section">
-                    <input id = "postDescription">
+                    <button type="button" onclick="RestGetAll()">Поиск комнаты</button>
                 </div>
             </div>
+            <div id="section_test" class="panel panel-default">
+                <div class="panel-heading"> Результаты поиска </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Комната</th>
+                        <th>Кол-во человек</th>
+                        <th>Дата</th>
+                        <th>Время начала</th>
+                        <th>Время окончания</th>
+                    </tr>
+                    </thead>
+                    <tbody id="response"></tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <div id = "menu1" class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Поиск комнат</h3>
-        </div>
-        <div class="panel-body">
-            <div class="section_main">
+        <div class="tabs-item" id="tab-2">
+            <div class="menu">
                 <div class="section">
                     <label>Комната</label>
                 </div>
@@ -84,10 +97,91 @@
                 <div class="section">
                     <label>Время окончания</label>
                 </div>
+                <div class="section">
+                </div>
             </div>
-            <div class="section_main">
+            <div class="menu">
+                <div class="section">
+                    <select>
+                        <option value="">Выберите из списка</option>
+                    </select>
+                </div>
                 <div class="section">
                     <input>
+                </div>
+                <div class="section">
+                    <input type="date" min = "01-01-2018">
+                </div>
+                <div class="section">
+                    <input type="time">
+                </div>
+                <div class="section">
+                    <input type="time">
+                </div>
+                <div class="section">
+                    <button>Найти</button>
+                </div>
+            </div>
+            <div id="section_test1" class="panel panel-default">
+                <div class="panel-heading"> Результаты поиска </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Комната</th>
+                        <th>Кол-во человек</th>
+                        <th>Дата</th>
+                        <th>Время начала</th>
+                        <th>Время окончания</th>
+                        <th>Кол-во человек на совещании</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tabs-item" id="tab-3">
+            <div class="menu">
+                <div class="section">
+                    <label>Комната</label>
+                </div>
+                <div class="section">
+                    <label>Количество человек</label>
+                </div>
+                <div class="section">
+                    <label>Дата</label>
+                </div>
+                <div class="section">
+                    <label>Время начала</label>
+                </div>
+                <div class="section">
+                    <label>Время окончания</label>
+                </div>
+                <div class="section">
+                    <label>Цель собрания</label>
+                </div>
+                <div class="section">
+                    <label>ФИО бронирующего</label>
+                </div>
+                <div class="section">
+                </div>
+            </div>
+            <div class="menu">
+                <div class="section">
+                    <select>
+                        <option value="">Выберите из списка</option>
+                    </select>
+                </div>
+                <div class="section">
+                    <input>
+                </div>
+                <div class="section">
+                    <input type="date" min = "01-01-2018">
+                </div>
+                <div class="section">
+                    <input type="time">
+                </div>
+                <div class="section">
+                    <input type="time">
                 </div>
                 <div class="section">
                     <input>
@@ -96,36 +190,11 @@
                     <input>
                 </div>
                 <div class="section">
-                    <input>
-                </div>
-                <div class="section">
-                    <input>
+                    <button>Забронировать комнату</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="test2">
-        <button type="button" onclick="RestPost($('#postName').val(), $('#postCount').val(), $('#postDate').val(), $('#postTimeStart').val(), $('#postTimeEnd').val(), $('#postDescription').val())">Забронировать комнату</button>
-        <button>Поиск комнаты</button>
-        <button>Поиск забронированных комнат</button>
-    </div>
-    <div id = "section_test" class="panel panel-default">
-        <div class="panel-heading"> Результаты </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Комната</th>
-                <th>Количество человек</th>
-                <th>Дата</th>
-                <th>Время начала</th>
-                <th>Время окончания</th>
-                <th>Цель</th>
-            </tr>
-            </thead>
-            <tbody id="response"></tbody>
-        </table>
-    </div>
-</div>
 </div>
 </body>
 </html>

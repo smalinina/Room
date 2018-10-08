@@ -42,4 +42,6 @@ public interface RoomService {
      * @param id for deleting room
      */
     Room deleteRoomById(long id);
+
+    Room getRoomByName(String name);
 }
