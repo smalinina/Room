@@ -1,6 +1,8 @@
 package talks.room.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -10,15 +12,11 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
     @Column(name = "date_start")
-    @Temporal(TemporalType.TIME)
-    private Date dataStart;
+    private LocalTime dataStart;
     @Column(name = "date_end")
-    //@Column(name = "end_date", columnDefinition = "DATE")
-    @Temporal(TemporalType.TIME)
-    private Date dataEnd;
+    private LocalTime dataEnd;
     @Column(name = "count_room")
     private int countRoom;
     private String author;
@@ -34,27 +32,27 @@ public class Reservation {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Date getDataStart() {
+    public LocalTime getDataStart() {
         return dataStart;
     }
 
-    public void setDataStart(Date dataStart) {
+    public void setDataStart(LocalTime dataStart) {
         this.dataStart = dataStart;
     }
 
-    public Date getDataEnd() {
+    public LocalTime getDataEnd() {
         return dataEnd;
     }
 
-    public void setDataEnd(Date dataEnd) {
+    public void setDataEnd(LocalTime dataEnd) {
         this.dataEnd = dataEnd;
     }
 

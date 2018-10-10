@@ -1,27 +1,25 @@
 var service = "http://localhost:8080/room";
+var service1 = "http://localhost:8080/reservation";
 
-var RestPost = function (name, count, date, dateStart, dateEnd,description) {
+var RestPost = function (room_id, count, date, dateStart, dateEnd,author) {
     var JSONObject = {
-        'name': name,
+        'room_id': room_id,
         'count': count,
         'date': date,
         'dateStart': dateStart,
         'dateEnd': dateEnd,
-        'description': description
+        'author': author
     };
 
     $.ajax({
         type: 'POST',
-        url: service + '/add',
+        url: service1 + '/add',
         contentType: 'application/json;utf-8',
         data: JSON.stringify(JSONObject),
         dataType: 'json',
-        async: false,
+        async: true,
         success: function (result) {
-            for (var i = 0; i < result.length; i++) {
-                $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td></tr>');
-            }
-
+            $('#response').html(JSON.stringify(result))
         },
         error: function (jqXHR, testStatus, errorThrown) {
             $('#response').html(JSON.stringify(jqXHR))
