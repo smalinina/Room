@@ -41,7 +41,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> getRoomByCount() {
-        return roomDao.findRoomByCount();
+    public List<Room> getListRoomByCount(int count) {
+        return roomDao.getListByCount(count);
     }
+
 }

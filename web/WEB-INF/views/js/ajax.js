@@ -26,7 +26,7 @@ var RestPost = function (room_id, count, date, dateStart, dateEnd,author) {
         }
     });
 };
-
+/*
 var RestGet = function (id) {
     $.ajax({
         type: 'GET',
@@ -42,7 +42,7 @@ var RestGet = function (id) {
     });
 };
 
-
+*/
 $("select").click(function(){
 //$('#category2').click( function () {
 //var RestGetByName = function(){
@@ -130,7 +130,7 @@ $(function() {
 var RestGetCount = function (count) {
     $.ajax({
         type: 'GET',
-        url: service + '/get/' + count,
+        url: service + '/get/count/' + count,
         dataType: 'json',
         async: false,
         success: function (result) {

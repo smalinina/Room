@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface RoomDao extends BasicDao<Room> {
 
-    List<Room> findRoomByCount();
+    List<Room> getListByCount(int count);
 }

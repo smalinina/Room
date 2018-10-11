@@ -49,7 +49,7 @@
                     </select>
                 </div>
                 <div class="section">
-                    <input id="getRoomCount" value="">
+                    <input id="getRoomByCount" value="">
                 </div>
                 <div class="section">
                     <input type="date" min = "01-01-2018">
@@ -61,7 +61,7 @@
                     <input type="time">
                 </div>
                 <div class="section">
-                    <button type="button" onclick="RestGetCount($('#getRoomCount').val())">Поиск комнаты</button>
+                    <button type="button" onclick="RestGetCount($('#getRoomByCount').val())">Поиск комнаты</button>
                 </div>
             </div>
             <div id="section_test" class="panel panel-default">

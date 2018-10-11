@@ -46,15 +46,17 @@ public class RoomController {
         return roomService.deleteRoomById(Long.parseLong(id));
     }
 
-    @RequestMapping(value = "/get/{count}", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/count/{count}", method = RequestMethod.GET , produces = "application/json;charset=utf-8")
     @ResponseBody
-    public List<Room> getRoomByCount() {
-        return roomService.getRoomByCount();
+    public List<Room> getListRoomByCount(@PathVariable(value = "count") String count) {
+        return roomService.getListRoomByCount(Integer.parseInt(count));
     }
 
-    List<Room> washFacilityList = pskvorWashFacilityDaoService.getWashFacilitiesOnNet(idNet);
-        if (washFacilityList == null)
-            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-        else
-                return washFacilityList;
+/*
+    @RequestMapping(value = "/get/count/{count}", method = RequestMethod.GET , produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public List<Room> getListRoomByCount(@RequestParam Integer count, @RequestParam String id) {
+        return roomService.getListRoomByCount(Integer.parseInt(count));
+    }
+*/
 }
