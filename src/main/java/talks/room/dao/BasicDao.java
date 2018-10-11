@@ -43,6 +43,4 @@ public interface BasicDao<T> {
      * @param entity for delete
      */
     T delete(T entity);
-
-    T getByName(String name);
 }

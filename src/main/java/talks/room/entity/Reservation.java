@@ -1,5 +1,8 @@
 package talks.room.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -32,6 +35,7 @@ public class Reservation {
         this.id = id;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     public LocalDate getDate() {
         return date;
     }
@@ -40,6 +44,7 @@ public class Reservation {
         this.date = date;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
     public LocalTime getDataStart() {
         return dataStart;
     }
@@ -48,6 +53,7 @@ public class Reservation {
         this.dataStart = dataStart;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
     public LocalTime getDataEnd() {
         return dataEnd;
     }

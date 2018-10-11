@@ -43,5 +43,5 @@ public interface RoomService {
      */
     Room deleteRoomById(long id);
 
-    Room getRoomByName(String name);
+    List<Room> getRoomByCount();
 }

@@ -46,9 +46,15 @@ public class RoomController {
         return roomService.deleteRoomById(Long.parseLong(id));
     }
 
-    @RequestMapping(value = "/get/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/{count}", method = RequestMethod.GET)
     @ResponseBody
-    public Room getRoomByName(@PathVariable(value = "name") String name){
-        return roomService.getRoomByName(name);
+    public List<Room> getRoomByCount() {
+        return roomService.getRoomByCount();
     }
+
+    List<Room> washFacilityList = pskvorWashFacilityDaoService.getWashFacilitiesOnNet(idNet);
+        if (washFacilityList == null)
+            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+        else
+                return washFacilityList;
 }

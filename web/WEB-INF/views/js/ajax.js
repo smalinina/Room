@@ -77,7 +77,6 @@ RestGetAll = function () {
             for (var i = 0; i < result.length; i++) {
                 $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td></tr>');
             }
-
         },
         error: function (jqXHR, testStatus, errorThrown) {
             $('#response').html(JSON.stringify(jqXHR))
@@ -85,6 +84,26 @@ RestGetAll = function () {
     });
 };
 
+
+
+var RestGetAll1;
+RestGetAll = function () {
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/reservation/get/all',
+        dataType: 'json',
+        async: false,
+        success: function (result) {
+            $("#response").empty();
+            for (var i = 0; i < result.length; i++) {
+                $('#response').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td><td>' + result[i].dateStart + '</td><td>' + result[i].dateEnd + '</td></tr>');
+            }
+        },
+        error: function (jqXHR, testStatus, errorThrown) {
+            $('#response').html(JSON.stringify(jqXHR))
+        }
+    });
+};
 
 
 $(function() {
@@ -105,3 +124,23 @@ $(function() {
         $('#tabs .tabs-nav a[href=' + $(this).data('id')+ ']').click();
     });
 });
+
+
+
+var RestGetCount = function (count) {
+    $.ajax({
+        type: 'GET',
+        url: service + '/get/' + count,
+        dataType: 'json',
+        async: false,
+        success: function (result) {
+            $("#responseCount").empty();
+            for (var i = 0; i < result.length; i++) {
+                $('#responseCount').append('<tr><td>' + result[i].name + '</td><td>' + result[i].count + '</td><td>' + result[i].date + '</td></tr>');
+            }
+        },
+        error: function (jqXHR, testStatus, errorThrown) {
+            $('#responseCount').html(JSON.stringify(jqXHR))
+        }
+    });
+};
