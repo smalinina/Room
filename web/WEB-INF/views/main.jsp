@@ -44,7 +44,7 @@
             </div>
             <div class="menu">
                 <div class="section">
-                    <select id="category1">
+                    <select id="">
                         <option value="">Выберите из списка</option>
                     </select>
                 </div>
@@ -146,9 +146,6 @@
                     <label>Количество человек</label>
                 </div>
                 <div class="section">
-                    <label>Дата</label>
-                </div>
-                <div class="section">
                     <label>Время начала</label>
                 </div>
                 <div class="section">
@@ -163,32 +160,32 @@
                 <div class="section">
                 </div>
             </div>
-            <div class="menu">
+            <div class="menu" id="myform-1">
                 <div class="section">
-                    <select id="postName">
+                    <select id="category1">
                         <option value="">Выберите из списка</option>
                     </select>
                 </div>
                 <div class="section">
-                    <input id="postCount">
+                    <input id="roomId" name="roomId" name="roomId">
                 </div>
                 <div class="section">
-                    <input id="postDate" type="date" min = "01-01-2018">
+                    <input id="postCount" name="postCount" name="countRoom">
                 </div>
                 <div class="section">
-                    <input id="postStartTime" type="time">
+                    <input id="postStartTime" type="datetime-local" name="dateStart">
                 </div>
                 <div class="section">
-                    <input id="postEndTime"type="time">
+                    <input id="postEndTime"type="datetime-local" name="dateEnd">
                 </div>
                 <div class="section">
                     <input id="postDescription">
                 </div>
                 <div class="section">
-                    <input id="postAuthor">
+                    <input id="postAuthor" name="author">
                 </div>
                 <div class="section">
-                    <button type="button" onclick="RestPost($('#postName').val(),$('#postCount').val(), $('#postDate').val(), $('#postStartTime').val(), $('#postEndTime').val(),$('#postAuthor').val() )">Забронировать комнату</button>
+                    <button type="button" onclick="RestPost($('#roomId').val(),$('#postCount').val(), $('#postStartTime').val(), $('#postEndTime').val(),$('#postAuthor').val() )">Забронировать комнату</button>
                 </div>
             </div>
         </div>

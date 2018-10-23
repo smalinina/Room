@@ -1,12 +1,19 @@
 package talks.room.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "reservation")
@@ -15,11 +22,15 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private LocalDate date;
+    //private LocalDate date;
     @Column(name = "date_start")
-    private LocalTime dataStart;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+    //@Temporal(TemporalType.TIMESTAMP)
+    //@Convert(converter = LocalDateTimeConverter.class)
+    //DateTimeFormatter dataStart = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private LocalDateTime dataStart;
     @Column(name = "date_end")
-    private LocalTime dataEnd;
+    private LocalDateTime dataEnd;
     @Column(name = "count_room")
     private int countRoom;
     private String author;
@@ -35,30 +46,33 @@ public class Reservation {
         this.id = id;
     }
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+   /* @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     public LocalDate getDate() {
         return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
+    } */
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
-    public LocalTime getDataStart() {
+    //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm")
+   // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm")
+    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    public LocalDateTime getDataStart() {
         return dataStart;
     }
 
-    public void setDataStart(LocalTime dataStart) {
+    public void setDataStart(LocalDateTime dataStart) {
         this.dataStart = dataStart;
     }
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
-    public LocalTime getDataEnd() {
+    //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm")
+    public LocalDateTime getDataEnd() {
         return dataEnd;
     }
 
-    public void setDataEnd(LocalTime dataEnd) {
+    public void setDataEnd(LocalDateTime dataEnd) {
         this.dataEnd = dataEnd;
     }
 

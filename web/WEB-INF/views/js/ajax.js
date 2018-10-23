@@ -1,11 +1,10 @@
 var service = "http://localhost:8080/room";
 var service1 = "http://localhost:8080/reservation";
 
-var RestPost = function (room_id, count, date, dateStart, dateEnd,author) {
+var RestPost = function (roomId, countRoom, dateStart, dateEnd,author) {
     var JSONObject = {
-        'room_id': room_id,
-        'count': count,
-        'date': date,
+        'roomId': roomId,
+        'countRoom': countRoom,
         'dateStart': dateStart,
         'dateEnd': dateEnd,
         'author': author
@@ -17,7 +16,7 @@ var RestPost = function (room_id, count, date, dateStart, dateEnd,author) {
         contentType: 'application/json;utf-8',
         data: JSON.stringify(JSONObject),
         dataType: 'json',
-        async: true,
+        async: false,
         success: function (result) {
             $('#response').html(JSON.stringify(result))
         },
@@ -144,3 +143,6 @@ var RestGetCount = function (count) {
         }
     });
 };
+
+
+
